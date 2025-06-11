@@ -24,7 +24,8 @@
           <div class="mb-3">
             <label for="planName" class="form-label">Nazwa planu</label>
             <input 
-              [(ngModel)]="planName" 
+              [ngModel]="(planName$ | async)" 
+              (ngModelChange)="updatePlanName($event)" 
               name="planName" 
               id="planName" 
               placeholder="Nazwa planu" 
@@ -35,7 +36,8 @@
           <div class="mb-3">
             <label for="planDescription" class="form-label">Opis planu</label>
             <textarea 
-              [(ngModel)]="planDescription" 
+              [ngModel]="(planDescription$ | async)" 
+              (ngModelChange)="updatePlanDescription($event)" 
               name="planDescription" 
               id="planDescription" 
               placeholder="Opis planu" 
@@ -47,14 +49,15 @@
           <!-- Training Days -->
           <div class="mb-4">
             <h4 class="mb-3 text-secondary">Dni treningowe</h4>
-            @for(day of days; track day; let index = $index) {
+            @for(day of (days$ | async); track day; let index = $index) {
               <div class="card mb-3 border-light shadow-sm">
                 <div class="card-body">
                   <div class="row g-3">
                     <div class="col-md-6">
                       <label for="videoLink-{{index}}" class="form-label">Link do YouTube</label>
                       <input 
-                        [(ngModel)]="day.videoLink" 
+                        [ngModel]="day.videoLink" 
+                        (ngModelChange)="updateDay(index, 'videoLink', $event)" 
                         name="videoLink-{{index}}" 
                         id="videoLink-{{index}}" 
                         placeholder="Link do YouTube" 
@@ -64,7 +67,8 @@
                     <div class="col-md-3">
                       <label for="time-{{index}}" class="form-label">Czas trwania (min)</label>
                       <input 
-                        [(ngModel)]="day.time" 
+                        [ngModel]="day.time" 
+                        (ngModelChange)="updateDay(index, 'time', $event)" 
                         name="time-{{index}}" 
                         id="time-{{index}}" 
                         type="number" 
@@ -75,7 +79,8 @@
                     <div class="col-md-3">
                       <label for="burnedKcal-{{index}}" class="form-label">Spalone kcal</label>
                       <input 
-                        [(ngModel)]="day.burnedKcal" 
+                        [ngModel]="day.burnedKcal" 
+                        (ngModelChange)="updateDay(index, 'burnedKcal', $event)" 
                         name="burnedKcal-{{index}}" 
                         id="burnedKcal-{{index}}" 
                         type="number" 
@@ -114,9 +119,18 @@
               Zapisz plan
             </button>
           </div>
+
+          <!-- Feedback -->
+          @if (loading$ | async) {
+            <div class="spinner-border text-primary mt-3" role="status">
+              <span class="visually-hidden">Ładowanie...</span>
+            </div>
+          }
+          @if (error$ | async; as error) {
+            <div class="alert alert-danger mt-3">{{ error }}</div>
+          }
         </form>
       </div>
     </div>
   </div>
 </div>
-

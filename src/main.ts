@@ -19,6 +19,6 @@ bootstrapApplication(AppComponent, {
     provideStoreDevtools({ maxAge: 25, logOnly: false }),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }, // dodaj ten provider
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }, 
   ],
 });
