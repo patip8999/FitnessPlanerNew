@@ -1,0 +1,122 @@
+<div class="container py-5">
+  <div class="row">
+    <!-- Image Section -->
+    <div class="col-lg-6 mb-4 mb-lg-0">
+      <div class="card shadow-sm">
+        <img src="assets/foto.jpg" alt="Fitness Plan Image" class="img-fluid rounded-top" style="object-fit: cover; height: 300px;" />
+        <div class="card-body text-center">
+          <h2 class="card-title mb-3">Stwórz swój wymarzony plan fitness!</h2>
+          <p class="card-text text-muted">
+            Zaprojektuj idealny harmonogram ćwiczeń dostosowany do Twoich celów i potrzeb. 
+            Dodaj dni treningowe, ustal czas trwania sesji, wprowadź linki do inspirujących filmów 
+            na YouTube i oszacuj kalorie, które planujesz spalić. Twoja aktywność fizyczna 
+            zaczyna się tutaj!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="col-lg-6">
+      <div class="card shadow-sm p-4">
+        <h3 class="mb-4 text-primary">Nowy plan fitness</h3>
+        <form>
+          <div class="mb-3">
+            <label for="planName" class="form-label">Nazwa planu</label>
+            <input 
+              [(ngModel)]="planName" 
+              name="planName" 
+              id="planName" 
+              placeholder="Nazwa planu" 
+              class="form-control" 
+              required 
+            />
+          </div>
+          <div class="mb-3">
+            <label for="planDescription" class="form-label">Opis planu</label>
+            <textarea 
+              [(ngModel)]="planDescription" 
+              name="planDescription" 
+              id="planDescription" 
+              placeholder="Opis planu" 
+              class="form-control" 
+              rows="4"
+            ></textarea>
+          </div>
+
+          <!-- Training Days -->
+          <div class="mb-4">
+            <h4 class="mb-3 text-secondary">Dni treningowe</h4>
+            @for(day of days; track day; let index = $index) {
+              <div class="card mb-3 border-light shadow-sm">
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="videoLink-{{index}}" class="form-label">Link do YouTube</label>
+                      <input 
+                        [(ngModel)]="day.videoLink" 
+                        name="videoLink-{{index}}" 
+                        id="videoLink-{{index}}" 
+                        placeholder="Link do YouTube" 
+                        class="form-control" 
+                      />
+                    </div>
+                    <div class="col-md-3">
+                      <label for="time-{{index}}" class="form-label">Czas trwania (min)</label>
+                      <input 
+                        [(ngModel)]="day.time" 
+                        name="time-{{index}}" 
+                        id="time-{{index}}" 
+                        type="number" 
+                        placeholder="Czas (min)" 
+                        class="form-control" 
+                      />
+                    </div>
+                    <div class="col-md-3">
+                      <label for="burnedKcal-{{index}}" class="form-label">Spalone kcal</label>
+                      <input 
+                        [(ngModel)]="day.burnedKcal" 
+                        name="burnedKcal-{{index}}" 
+                        id="burnedKcal-{{index}}" 
+                        type="number" 
+                        placeholder="Kcal" 
+                        class="form-control" 
+                      />
+                    </div>
+                    <div class="col-12 mt-2">
+                      <button 
+                        (click)="removeDay(index)" 
+                        class="btn btn-outline-danger btn-sm"
+                      >
+                        Usuń dzień
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="d-flex gap-2">
+            <button 
+              type="button" 
+              (click)="addDay()" 
+              class="btn btn-outline-primary"
+            >
+              Dodaj dzień
+            </button>
+            <button 
+              type="button" 
+              (click)="savePlan()" 
+              class="btn btn-primary"
+            >
+              Zapisz plan
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

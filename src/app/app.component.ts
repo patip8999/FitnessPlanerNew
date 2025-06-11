@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 import { CommonModule } from '@angular/common';
-import { FitnessPlansComponent } from '../../projects/fitness-plans/src/public-api';
+import { createFitnessPlanComponent } from "../../projects/fitness-plans/src/lib/Components/CreateFitnessPlans/CreateFitnessPlans.component";
+
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FitnessPlansComponent],
+  imports: [RouterOutlet, CommonModule, createFitnessPlanComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
