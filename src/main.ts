@@ -11,9 +11,12 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { environment } from './environments/environments';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
   providers: [
+     provideRouter(routes),
     provideStore({ fitnessPlans: fitnessPlansReducer }),
     provideEffects([FitnessPlansEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: false }),

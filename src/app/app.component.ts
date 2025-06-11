@@ -9,7 +9,7 @@ import {  CreateFitnessPlanComponent } from "../../projects/fitness-plans/src/li
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, CreateFitnessPlanComponent],
+  imports: [RouterOutlet, CommonModule, ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
