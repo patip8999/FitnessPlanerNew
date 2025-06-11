@@ -1,16 +1,34 @@
 <div class="container py-5">
-  <div class="row">
+  <div class="row align-items-center">
     <!-- Image Section -->
     <div class="col-lg-6 mb-4 mb-lg-0">
-      <div class="card shadow-sm">
-        <img src="assets/foto.jpg" alt="Fitness Plan Image" class="img-fluid rounded-top" style="object-fit: cover; height: 300px;" />
-        <div class="card-body text-center">
-          <h2 class="card-title mb-3">Stwórz swój wymarzony plan fitness!</h2>
-          <p class="card-text text-muted">
-            Zaprojektuj idealny harmonogram ćwiczeń dostosowany do Twoich celów i potrzeb. 
-            Dodaj dni treningowe, ustal czas trwania sesji, wprowadź linki do inspirujących filmów 
-            na YouTube i oszacuj kalorie, które planujesz spalić. Twoja aktywność fizyczna 
-            zaczyna się tutaj!
+      <div class="card shadow border-0">
+        <div id="fitnessCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/foto5.jpg" class="d-block w-100 rounded-top" alt="Fitness Image 1" style="object-fit: cover; height: 300px;">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/foto2.jpg" class="d-block w-100 rounded-top" alt="Fitness Image 2" style="object-fit: cover; height: 300px;">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/foto3.jpg" class="d-block w-100 rounded-top" alt="Fitness Image 3" style="object-fit: cover; height: 300px;">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#fitnessCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#fitnessCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="card-body text-center bg-primary text-white rounded-bottom">
+          <h2 class="card-title mb-3">Stwórz swój plan fitness!</h2>
+          <p class="card-text">
+            Zaprojektuj harmonogram treningów, który pomoże Ci osiągnąć Twoje cele. 
+            Dodaj dni, filmy z YouTube i śledź spalone kalorie!
           </p>
         </div>
       </div>
